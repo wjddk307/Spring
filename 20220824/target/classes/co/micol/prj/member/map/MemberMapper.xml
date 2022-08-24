@@ -9,6 +9,9 @@
   <select id="memberSelect" parameterType="co.micol.prj.member.vo.MemberVO"
   		  resultType="co.micol.prj.member.vo.MemberVO">
     	SELECT * FROM MEMBER WHERE MEMBER_ID = #{member_id}
+    	<if test="member_password != null"><!-- id만 들어오면 select password같이 들어오면 아이디체크 -->
+    		AND MEMBER_PASSWORD = #{member_password}
+    	</if>
   </select>
   
   <insert id="memberInsert">

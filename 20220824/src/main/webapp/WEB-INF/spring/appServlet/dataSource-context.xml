@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- db.properties 위치설정 -->
+	<context:property-placeholder location="classpath:config/db.properties"/>
+	<!-- DBCP
+	   <bean class="com.zaxxer.hikari.HikariConfig" id="hikariConfig">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="username" value="micol" />
+		<property name="password" value="1234" />
+	</bean>
+	
+	 연결객체를 만듬 (한꺼번에) DAO
+	<bean class="com.zaxxer.hikari.HikariDataSource" id="dataSource">
+	    <constructor-arg ref="hikariConfig" />
+	</bean> 
+	-->
+	
+	
+	<bean class="org.apache.commons.dbcp2.BasicDataSource" id="dataSource" destroy-method="close">
+		<property name="driverClassName" value="${driver}" />
+		<property name="url" value="${url}" />
+		<property name="username" value="${name}" />
+		<property name="password" value="${password}" />
+	</bean>
+	
+	<!-- My batis -->
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
+	   <property name="dataSource" ref="dataSource" /><!-- classpath는 resources찾음 -->
+	   <property name="configLocation" value="classpath:config/mybatis-config.xml" />
+	</bean>
+	
+	<!-- map으로 끝나는 xml찾아서 등록 -->
+	<mybatis-spring:scan base-package="co.micol.prj.**.map"/>
+</beans>
