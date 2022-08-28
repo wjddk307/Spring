@@ -18,18 +18,21 @@
 		<div>
 		   <table>
 		   	  <tr>
-		   	    <td width="100">
+		   	    <td width="60">
 		   	    	<select id="key" name="key">
 		   	    		<option value="1">제목</option>
 		   	    		<option value="2">내용</option>
 		   	    		<option value="3">작성자</option>
 		   	    	</select>
 		   	    </td>
-		   	    <td width="100">
+		   	    <td width="60">
 		   	    	<input type="text" id="val" name="val">
 		   	    </td>
-		   	    <td width="100" align="center">
+		   	    <td width="60" align="center">
 		   	       <button type="button" onclick="searchCall()">검색</button>
+		   	    </td>
+		   	    <td>
+		   	    	<button type="button" onclick="location.href='noticeForm.do'">작성하기</button>
 		   	    </td>
 		   	  </tr>
 		   </table>
@@ -136,7 +139,8 @@
 		$("#tbody").remove();
 		var newbody = $("<tbody>").attr("id","tbody");
 		data.forEach(function(els) {
-			var tr = $("<tr>").append( $("<td>").html(els.noticeId))
+			var tr = $("<tr>").attr("onclick", "noticeCall("+ els.noticeId +")")
+							  .append( $("<td>").html(els.noticeId))
 					          .append( $("<td>").html(els.noticeWriter))
 					 		  .append( $("<td>").html(els.noticeTitle))
 					          .append( $("<td>").html(els.noticeDate))

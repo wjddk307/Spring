@@ -38,7 +38,7 @@
 	</table>
    </div><br>
    <div>
-   	  <button type="button" onclick="location.href='noticeSelect.do'">목록가기</button>
+   	  <button type="button" onclick="location.href='noticeSelectList.do'">목록가기</button>
    </div>
 </div>   	
 </body>
