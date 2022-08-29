@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+     
+    <!-- tiles 모양설정 --> 
+	<definition name="manager" template="/WEB-INF/views/layout/layout.jsp">
+		<put-attribute name="title" value="my Spring Web" /> 
+		<put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
+		<put-attribute name="side" value="/WEB-INF/views/layout/side.jsp" />
+		<put-attribute name="body" value="" /><!-- 밖에서 끼워넣을꺼라 없어도 됌 -->
+		<put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
+	</definition>
+	
+	<!-- tiles body 경로 조건 -->
+	<definition name="*/*" extends="manager">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+	
+ <!--  	<definition name="myApp" template="/WEB-INF/views/layout/layoutUser.jsp">
+		<put-attribute name="title" value="my Spring Web" /> 
+		<put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
+		<put-attribute name="body" value="" />밖에서 끼워넣을꺼라 없어도 됌
+		<put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
+	</definition>
+	
+	<definition name="*/*" extends="myApp">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+	
+	<definition name="noTiles" template="/WEB-INF/views/layout/layoutNotiles.jsp">
+		<put-attribute name="title" value="my Spring Web" />
+		<put-attribute name="body" value="" />
+	</definition>
+	
+	<definition name="*" extends="noTiles">
+		<put-attribute name="body" value="/WEB-INF/views/noTiles/{1}.jsp" />
+	</definition>  -->
+
+	
+</tiles-definitions>

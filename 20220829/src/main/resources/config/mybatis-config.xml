@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+	    <!-- mybatis NULL처리 -->
+		<setting name="jdbcTypeForNull" value="NULL" />
+		
+		<!-- DB의 _를 vo 형식으로 변환  -->
+		<setting name="mapUnderscoreToCamelCase" value="True"/>
+	</settings>
+</configuration>

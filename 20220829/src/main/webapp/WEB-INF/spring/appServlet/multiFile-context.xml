@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- multipart request(text&이진 바이너리)객체에 담은것을 MultipartResolver가 구분해줌(해석)  / 1G 1024*1024*1024 -->
+	<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+		<property name="maxUploadSize" value="52428800"></property>
+	</bean>
+	
+	<!-- servlet-context.xml에 넣을꺼면 beans:bean 태그사용해야함 -->
+	
+</beans>
